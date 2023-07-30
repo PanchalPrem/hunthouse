@@ -1,0 +1,95 @@
+<app-header></app-header>
+<div class="wrap_us">
+  <app-sidebar></app-sidebar>
+  <div class="conten_main conten_set">
+    <h3><span><a routerLink="/users" class="btn btn_theme mr-2" style="margin-right: 5px;"><i
+      class="fa fa-long-arrow-left"></i></a> Add Broker</span>
+</h3>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card_me">
+          <form [formGroup]="creatBrokerForm" (ngSubmit)="createBroker()">
+            <div class="p-3">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label>Full Name</label>
+                    <input type="text" class="form-control" formControlName="name" placeholder="Full Name"  required>
+                    <div *ngIf="f.name.invalid && (f.name.dirty || f.name.touched )" class="text-danger valdi">
+                      <div *ngIf="f.name.errors?.required"> Full Name is required</div>
+                      <div *ngIf="f.name.errors?.pattern">Please enter alphabets only</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label>Username</label>
+                    <input type="text" class="form-control" formControlName="username" placeholder="username"  required>
+                    <div *ngIf="f.username.invalid && (f.username.dirty || f.username.touched )"
+                      class="text-danger valdi">
+                      <div *ngIf="f.username.errors?.required"> Username is required.</div>
+                      <div *ngIf="f.usernameerrors?.pattern">Please enter alpha-numeric only</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label>Email</label>
+                    <input type="email" class="form-control" formControlName="email"  placeholder="Email"  required>
+                    <div *ngIf="f.email.invalid && (f.email.dirty || f.email.touched )" class="text-danger valdi">
+                      <div *ngIf="f.email.errors?.required"> Email is required </div>
+                      <div *ngIf="f.email.errors?.pattern">Please enter proper email</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label>Mobile Number</label>
+                    <input type="text" class="form-control" formControlName="mobileno" placeholder="Mobile Number" minlength="10" maxlength="10" required>
+                    <div *ngIf="f.mobileno.invalid && (f.mobileno.dirty || f.mobileno.touched )"
+                      class="text-danger valdi">
+                      <div *ngIf="f.mobileno.errors?.required">Mobile number is required.</div>
+                      <!-- <div *ngIf="f.mobileNumber.errors?.minlength">Mobile number should be greater than 6 digits</div>
+                      <div *ngIf="f.mobileNumber.errors?.maxlength">Mobile number should be less than 12 digits</div> -->
+                      <div *ngIf="f.mobileno.errors?.pattern">Please enter digits only</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label>Password</label>
+                    <input type="password" class="form-control"  formControlName="password" autocomplete="new-password" placeholder="Password"
+                       required>
+                    <div *ngIf="f.password.invalid && (f.password.dirty || f.password.touched )"
+                      class="text-danger valdi">
+                      <div *ngIf="f.password.errors?.required"> Password is required</div>
+                      <div *ngIf="f.password.errors?.pattern"> Please enter characters only</div>
+                      <div *ngIf="f.password.errors?.minlength">Password should be greater than 6 characters</div>
+                      <div *ngIf="f.password.errors?.maxlength">Password should be less than 20 characters</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label>Gender</label>
+                    <select class="form-control" formControlName="gender" required>
+                      <option disabled selected value> -- Select Gender -- </option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                      <option value="other">Other</option>
+                    </select>
+                      <div *ngIf="f.gender.invalid && (f.gender.dirty || f.gender.touched )"
+                      class="text-danger valdi">
+                      <div *ngIf="f.gender.errors?.required"> Gender is required</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn_theme btn-lg" >Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

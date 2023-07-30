@@ -1,0 +1,73 @@
+<app-header></app-header>
+<div class="wrap_us">
+  <app-sidebar></app-sidebar>
+  <div class="conten_main conten_set">
+    <h3>Dashboard
+    </h3>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="box_4 card_me">
+          <a>
+            <span class="img_1"><img src="assets/img/earnings.png" alt=""></span>
+            <p>Earnings</p>
+            <h4>$ {{earnings}}</h4>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="box_4 card_me">
+          <a>
+            <span class="img_1"><img src="assets/img/Songs-Sold.png" alt=""></span>
+            <p>Songs Sold</p>
+            <h4> {{alldata.soldMusic}}</h4>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="box_4 card_me">
+          <a>
+            <span class="img_1"><img src="assets/img/Songs-Plays.png" alt=""></span>
+            <p>Songs Plays</p>
+            <h4>0 </h4>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-3" *ngIf="loginRole == 1">
+        <div class="box_4 card_me">
+          <a routerLink="/users">
+            <span class="img_1"><img src="assets/img/all-users.png" alt=""></span>
+            <p>Total Users</p>
+            <h4>{{alldata.user}}</h4>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-3" *ngIf="loginRole == 1">
+        <div class="box_4 card_me">
+          <a routerLink="/artist">
+            <span class="img_1"><img src="assets/img/music-artiste.png" alt=""></span>
+            <p>Total Artist</p>
+            <h4>{{alldata.artist}}</h4>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-3" *ngIf="loginRole == 1">
+        <div class="box_4 card_me">
+          <a routerLink="/lyricist">
+            <span class="img_1"><img src="assets/img/song-writer.png" alt=""></span>
+            <p>Total Lyricist</p>
+            <h4>{{alldata.writer}}</h4>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-3" *ngIf="loginRole == 1">
+        <div class="box_4 card_me">
+          <a routerLink="/composer">
+            <span class="img_1"><img src="assets/img/music-producer.png" alt=""></span>
+            <p>Total Composer</p>
+            <h4>{{alldata.composer}}</h4>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

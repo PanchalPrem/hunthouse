@@ -1,0 +1,7 @@
+span[data-target] {
+  cursor: pointer;
+}
+
+.pw-toggle {
+  height: 1rem;
+}

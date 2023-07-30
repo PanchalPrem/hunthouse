@@ -1,0 +1,21 @@
+.header ul li {
+  display: inline-block;
+  padding: 0 10px;
+}
+
+.header ul li a {
+  color: var(--w);
+  font-family: "PopSB";
+  font-size: 16px;
+}
+
+.header ul li a i {
+  font-size: 21px;
+  margin-right: 5px;
+}
+
+a.dropdown-item:hover {
+  /* background-color: #3ab2eb; */
+  background: #102237;
+  color: var(--blue);
+}
