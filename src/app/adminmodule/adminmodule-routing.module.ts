@@ -5,6 +5,9 @@ import { AuthGuard } from '../Guard/auth.guard';
 import { UsersComponent } from './users/users.component';
 import { CreateBrokerComponent } from './users/create-broker/create-broker.component';
 import { EditBrokerComponent } from './users/edit-broker/edit-broker.component';
+import { CategoryComponent } from './category/category.component';
+import { HouseComponent } from './house/house.component';
+import { AlwaysGuard } from '../Guard/always.guard';
 const routes: Routes = [
 
   {
@@ -24,6 +27,9 @@ const routes: Routes = [
     component: EditBrokerComponent,
     canActivate: [AuthGuard],
   },
+  {path:"category",component:CategoryComponent,canActivate:[AuthGuard]},
+
+  {path:'house',component:HouseComponent,canActivate:[AuthGuard]}
 ];
 
 @NgModule({

@@ -11,6 +11,8 @@ import { UsersComponent } from './users/users.component';
 import { ImageCropperModule } from 'ngx-image-cropper-support';
 import { CreateBrokerComponent } from './users/create-broker/create-broker.component';
 import { EditBrokerComponent } from './users/edit-broker/edit-broker.component';
+import { CategoryComponent } from './category/category.component';
+import { HouseComponent } from './house/house.component';
 
 
 
@@ -22,6 +24,8 @@ import { EditBrokerComponent } from './users/edit-broker/edit-broker.component';
     UsersComponent,
     CreateBrokerComponent,
     EditBrokerComponent,
+    CategoryComponent,
+    HouseComponent,
   ],
   imports: [
     CommonModule, ImageCropperModule,

@@ -681,6 +681,7 @@ h6 {
 .modal-header h4 {
   margin-bottom: 0;
   font-family: "PopSB";
+  color: #000;
 }
 
 .modal-dialog {
@@ -1268,7 +1269,7 @@ button.toast-close-button {
 }
 
 .modal-content {
-  background-color: #050910 !important;
+  background-color: #ffffff !important;
 }
 
 .ul_set.side_link>li>a:hover,

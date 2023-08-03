@@ -12,7 +12,12 @@ export class SidebarComponent implements OnInit {
   adminList: any = [
     { icon: "fa fa-dashboard", name: "Dashboard", path: "/dashboard", },
     { icon: "fa fa-users fa-fw", name: "Broker", path: "/users",  },
-    { icon: "fa fa-sign-out", name: "Logout", path: "", class:'logout' }
+    {icon:"	fa fa-bars",name:"Category",path:"/category"},
+    {icon:"	fa fa-home",name:"House",path:"/house"},
+
+    // { icon: "fa fa-sign-out", name: "Logout", path: "", class:'logout' }
+    { icon: "fa fa-sign-out", name: "Logout", path: "" }
+
   ]
   ngOnInit(): void {
     this.urlpath = '/' + this.route.snapshot.routeConfig?.path
