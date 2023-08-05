@@ -50,25 +50,57 @@ export class CommonService {
   }
   // broker api
 
+  //category start
   createCategory(data: any) {
     return this.http.post<any>(this.url + 'admin-create-category', data, {
       headers: this.header,
     });
   }
 
-  getcategoey(){
-    return this.http.get<any>(this.url + 'category-list?status' , {
+  getcategoey() {
+    return this.http.get<any>(this.url + 'category-list?status', {
       headers: this.header,
     });
   }
 
-  getCategoryById(data:any){
-    return this.http.get<any>(this.url + 'admin-category-details?_id='+ data,{headers: this.header});
+  getCategoryById(data: any) {
+    return this.http.get<any>(this.url + 'admin-category-details?_id=' + data, {
+      headers: this.header,
+    });
   }
 
-  updateCategory(data:any){
+  updateCategory(data: any) {
     return this.http.post<any>(this.url + 'admin-update-category', data, {
       headers: this.header,
     });
   }
+  //category end ----------------------------------------------------
+
+  // Onwer start
+
+  getAllOwner() {
+    return this.http.get<any>(this.url + 'owner-list', {
+      headers: this.header,
+    });
+  }
+
+  createOnwer(data: any) {
+    return this.http.post<any>(this.url + 'create-owner', data, {
+      headers: this.header,
+    });
+  }
+
+  updateOnwer(data: any) {
+    return this.http.post<any>(this.url + 'update-owner', data, {
+      headers: this.header,
+    });
+  }
+
+  getAllDetailsById(id:any) {
+    return this.http.get<any>(this.url + 'owner-detail?_id='+id, {
+      headers: this.header,
+    });
+  }
+
+  // Owner end ------------------------------------------------------
 }

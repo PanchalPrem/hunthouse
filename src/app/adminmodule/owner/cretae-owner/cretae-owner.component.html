@@ -1,0 +1,54 @@
+<app-header></app-header>
+<div class="wrap_us">
+  <app-sidebar></app-sidebar>
+  <div class="conten_main conten_set">
+    <h3><span><a routerLink="/owner" class="btn btn_theme mr-2" style="margin-right: 5px;"><i
+      class="fa fa-long-arrow-left"></i></a> Add Onwer</span>
+</h3>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card_me">
+          <form [formGroup]="creatOnwerForm" (ngSubmit)="createOwner()">
+            <div class="p-3">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label>Owner Name</label>
+                    <input type="text" class="form-control" formControlName="name" placeholder="Full Name"  required>
+                    <div *ngIf="f.name.invalid && (f.name.dirty || f.name.touched )" class="text-danger valdi">
+                      <div *ngIf="f.name.errors?.required"> Full Name is required</div>
+                      <div *ngIf="f.name.errors?.pattern">Please enter alphabets only</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label>Email</label>
+                    <input type="email" class="form-control" formControlName="email"  placeholder="Email"  required>
+                    <div *ngIf="f.email.invalid && (f.email.dirty || f.email.touched )" class="text-danger valdi">
+                      <div *ngIf="f.email.errors?.required"> Email is required </div>
+                      <div *ngIf="f.email.errors?.pattern">Please enter proper email</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label>Mobile Number</label>
+                    <input type="text" class="form-control" formControlName="number" placeholder="Mobile Number" minlength="10" maxlength="10" required>
+                    <div *ngIf="f.number.invalid && (f.number.dirty || f.number.touched )"
+                      class="text-danger valdi">
+                      <div *ngIf="f.number.errors?.required">Mobile number is required.</div>
+                      <div *ngIf="f.number.errors?.pattern">Please enter digits only</div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <button class="btn btn_theme btn-lg" >Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

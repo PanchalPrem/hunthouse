@@ -13,6 +13,11 @@ import { CreateBrokerComponent } from './users/create-broker/create-broker.compo
 import { EditBrokerComponent } from './users/edit-broker/edit-broker.component';
 import { CategoryComponent } from './category/category.component';
 import { HouseComponent } from './house/house.component';
+import { CreateHouseComponent } from './house/create-house/create-house.component';
+import { UpdateHouseComponent } from './house/update-house/update-house.component';
+import { OwnerComponent } from './owner/owner.component';
+import { CretaeOwnerComponent } from './owner/cretae-owner/cretae-owner.component';
+import { UpdateOwnerComponent } from './owner/update-owner/update-owner.component';
 
 
 
@@ -26,6 +31,11 @@ import { HouseComponent } from './house/house.component';
     EditBrokerComponent,
     CategoryComponent,
     HouseComponent,
+    CreateHouseComponent,
+    UpdateHouseComponent,
+    OwnerComponent,
+    CretaeOwnerComponent,
+    UpdateOwnerComponent,
   ],
   imports: [
     CommonModule, ImageCropperModule,
