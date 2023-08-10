@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { CommonService } from './../../common.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 declare var $: any;
 import Swal from 'sweetalert2';
+import { CommonService } from 'src/app/common.service';
 @Component({
   selector: 'app-owner',
   templateUrl: './owner.component.html',
@@ -30,6 +30,7 @@ export class OwnerComponent {
         this.allUsersList = res.data;
         this.datatable(this.allUsersList);
       }
+
     });
   }
 

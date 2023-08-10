@@ -1278,3 +1278,14 @@ button.toast-close-button {
   color: var(--blue);
 }
 
+.loader1{
+color: rgb(0, 0, 0);
+font-size: 50px ;
+margin-left: 48%;
+margin-top: 22%;
+}
+.container.lodO {
+  background: var(--BG) !important;
+  border: none !important;
+  box-shadow: none !important;
+}

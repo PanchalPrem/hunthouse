@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { CommonService } from './../../common.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { CommonService } from 'src/app/common.service';
 declare var $: any;
 @Component({
   selector: 'app-users',
@@ -16,7 +16,6 @@ export class UsersComponent {
     private toastr: ToastrService,
     private service: CommonService,
     private toster: ToastrService,
-    private route: ActivatedRoute,
     private router: Router
   ) {}
   allUsersList: any = [];
@@ -30,12 +29,13 @@ export class UsersComponent {
     });
   }
 
-  getBroker() {
-    this.service.getBrokerList().subscribe((res: any) => {
+ async getBroker() {
+  await this.service.getBrokerList().subscribe((res: any) => {
       if (res.ErrorCode == 200) {
         this.allUsersList = res.data;
         this.datatable(this.allUsersList);
       }
+
     });
   }
 

@@ -13,7 +13,7 @@ export class CommonService {
   ngOnInit(): void {}
   header: any = new HttpHeaders()
     .set('Authorization', `Bearer ${localStorage.getItem('token')}`)
-    .set('authkey', '' + localStorage.getItem('authKey'));
+    .set('authkey', '' + localStorage.getItem('authkey'));
 
   loginUser(data: any) {
     return this.http.post<any>(this.url + 'admin-sign-in', data);
@@ -103,4 +103,27 @@ export class CommonService {
   }
 
   // Owner end ------------------------------------------------------
+
+// house start
+
+createHouse(data: any) {
+  return this.http.post<any>(this.url + 'create-house', data, {headers: this.header,});
+};
+
+uploadHouseImages(data:any){
+  return this.http.post<any>(this.url + 'upload-house-image', data, {headers: this.header,});
+};
+
+getAllHouse(){
+  return this.http.get<any>(this.url + 'house-list',  {headers: this.header,});
+};
+
+getHouseDetailsById(data:any){
+  return this.http.get<any>(this.url + 'house-detail?_id='+data,  {headers: this.header,});
+};
+
+updateHouse(data: any) {
+  return this.http.post<any>(this.url + 'update-house', data, {headers: this.header,});
+};
+
 }

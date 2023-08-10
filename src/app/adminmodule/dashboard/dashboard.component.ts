@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CommonService } from './../../common.service';
+import { CommonService } from 'src/app/common.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',

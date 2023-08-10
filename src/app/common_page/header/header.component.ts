@@ -17,7 +17,6 @@ export class HeaderComponent implements OnInit {
   }
   Logout() {
     sessionStorage.removeItem('id')
-
     localStorage.clear();
     this.router.navigateByUrl('')
 

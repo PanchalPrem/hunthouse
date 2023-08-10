@@ -1,5 +1,5 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component, ElementRef, TemplateRef, ViewChild } from '@angular/core';
+import { Component, ElementRef,  ViewChild } from '@angular/core';
 import {
   NgbActiveModal,
   NgbModal,

@@ -1,1 +1,581 @@
-<p>update-house works!</p>
+<app-header></app-header>
+<div class="wrap_us">
+  <app-sidebar></app-sidebar>
+  <div class="conten_main conten_set">
+    <h3>
+      <span
+        ><a
+          routerLink="/house"
+          class="btn btn_theme mr-2"
+          style="margin-right: 5px"
+          ><i class="fa fa-long-arrow-left"></i
+        ></a>
+        Add House</span
+      >
+    </h3>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card_me">
+          <form [formGroup]="updateHouseForm" (ngSubmit)="UpdateHouse()">
+            <div class="p-3">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label>Broker Name</label>
+                    <select class="form-control "formControlName="brokerId"required>
+                      <option disabled selected value>Select Broker</option>
+                      <option [value]="item._id" *ngFor="let item of brokerData">{{item.name}}</option>
+                    </select>
+                    <div *ngIf="f.brokerId.invalid &&(f.brokerId.dirty || f.brokerId.touched)"class="text-danger valdi">
+                      <div *ngIf="f.brokerId.errors?.required">
+                        Broker id is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label>Category Name</label>
+                    <select
+                      class="form-control selc"
+                      formControlName="categoryId"
+                      required
+                    >
+                      <option disabled selected value>Select Category</option>
+                      <option [value]="item._id" *ngFor="let item of categoryData">{{item.name}}</option>
+
+                    </select>
+                    <div
+                      *ngIf="
+                        f.categoryId.invalid &&
+                        (f.categoryId.dirty || f.categoryId.touched)
+                      "
+                      class="text-danger valdi"
+                    >
+                      <div *ngIf="f.categoryId.errors?.required">
+                        Category id is required.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="mb-3">
+                    <label>Owner Name</label>
+                    <select
+                      class="form-control selc"
+                      formControlName="ownerId"
+                      required
+                    >
+                      <option disabled selected value>Select Owner</option>
+                      <option [value]="item._id" *ngFor="let item of ownerData">{{item.name}}</option>
+
+                    </select>
+                    <div
+                      *ngIf="
+                        f.ownerId.invalid &&
+                        (f.ownerId.dirty || f.ownerId.touched)
+                      "
+                      class="text-danger valdi"
+                    >
+                      <div *ngIf="f.ownerId.errors?.required">
+                        Owner Id is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label>Area</label>
+                    <input
+                      type="text"
+                      class="form-control selc"
+                      formControlName="area"
+                      autocomplete="new-text"
+                      placeholder="Enter Area"
+                      maxlength="50"
+                      required
+                    />
+                    <div
+                      *ngIf="f.area.invalid && (f.area.dirty || f.area.touched)"
+                      class="text-danger valdi"
+                    >
+                      <div *ngIf="f.area.errors?.required">
+                        Area is required.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label>Address</label>
+                    <input
+                      type="text"
+                      class="form-control selc"
+                      formControlName="address"
+                      autocomplete="new-text"
+                      placeholder="Enter Address"
+                      required
+                    />
+                    <div
+                      *ngIf="
+                        f.address.invalid &&
+                        (f.address.dirty || f.address.touched)
+                      "
+                      class="text-danger valdi"
+                    >
+                      <div *ngIf="f.address.errors?.required">
+                        Address is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label>About Property</label>
+                    <input
+                      type="text"
+                      class="form-control selc"
+                      formControlName="aboutProperty"
+                      placeholder="Enter About Property"
+                      required
+                    />
+                    <div
+                      *ngIf="
+                        f.aboutProperty.invalid &&
+                        (f.aboutProperty.dirty || f.aboutProperty.touched)
+                      "
+                      class="text-danger valdi"
+                    >
+                      <div *ngIf="f.aboutProperty.errors?.required">
+                        About Property is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label>Configuration</label>
+                    <input
+                      type="text"
+                      class="form-control selc"
+                      formControlName="configuration"
+                      placeholder="Enter Configuration"
+                      required
+                    />
+                    <div
+                      *ngIf="
+                        f.configuration.invalid &&
+                        (f.configuration.dirty || f.configuration.touched)
+                      "
+                      class="text-danger valdi"
+                    >
+                      <div *ngIf="f.configuration.errors?.required">
+                        Configuration is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <label>Available For</label>
+                    <select
+                      class="form-control selc"
+                      formControlName="availableFor"
+                      required
+                    >
+                      <option disabled selected value>Select</option>
+                      <option value="Family">Family</option>
+                      <option value="Boys">Boys</option>
+                      <option value="Girls">Girls</option>
+                      <option value="Any">Any</option>
+                    </select>
+                    <div
+                      *ngIf="
+                        f.availableFor.invalid &&
+                        (f.availableFor.dirty || f.availableFor.touched)
+                      "
+                      class="text-danger valdi"
+                    >
+                      <div *ngIf="f.availableFor.errors?.required">
+                        AvailableFor is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <label>Available From</label>
+                    <input
+                      type="date"
+                      class="form-control selc"
+                      formControlName="availableFrom"
+                      required
+                    />
+                    <div
+                      *ngIf="
+                        f.availableFrom.invalid &&
+                        (f.availableFrom.dirty || f.availableFrom.touched)
+                      "
+                      class="text-danger valdi"
+                    >
+                      <div *ngIf="f.availableFrom.errors?.required">
+                        AvailableFrom is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <label>Posted Byand On</label>
+                    <input
+                      type="date"
+                      class="form-control selc"
+                      formControlName="postedByandOn"
+                      required
+                    />
+                    <div
+                      *ngIf="
+                        f.postedByandOn.invalid &&
+                        (f.postedByandOn.dirty || f.postedByandOn.touched)
+                      "
+                      class="text-danger valdi"
+                    >
+                      <div *ngIf="f.postedByandOn.errors?.required">
+                        PostedByandOn is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <label>Total Floors</label>
+                    <input
+                      type="number"
+                      class="form-control selc"
+                      formControlName="totalFloors"
+                      placeholder="Enter Total Floors"
+                      required
+                    />
+                    <div
+                      *ngIf="
+                        f.totalFloors.invalid &&
+                        (f.totalFloors.dirty || f.totalFloors.touched)
+                      "
+                      class="text-danger valdi"
+                    >
+                      <div *ngIf="f.totalFloors.errors?.required">
+                        Total Floors is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <label>Furnishing</label>
+                    <!-- <input type="text" class="form-control"  formControlName="furnishing" placeholder="Enter Furnishing"
+                    required> -->
+                    <select
+                      class="form-control selc"
+                      formControlName="furnishing"
+                      required
+                    >
+                      <option disabled selected value>-- Select --</option>
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option>
+                    </select>
+                    <div
+                      *ngIf="
+                        f.furnishing.invalid &&
+                        (f.furnishing.dirty || f.furnishing.touched)
+                      "
+                      class="text-danger valdi"
+                    >
+                      <div *ngIf="f.furnishing.errors?.required">
+                        Furnishing is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <label>Facing</label>
+                    <select class="form-control selc" formControlName="facing" required>
+                      <option disabled selected value>Select Facing</option>
+                      <option  value="East">East</option>
+                      <option  value="west">west</option>
+                    </select>
+                    <div
+                      *ngIf="
+                        f.facing.invalid && (f.facing.dirty || f.facing.touched)
+                      "
+                      class="text-danger valdi"
+                    >
+                      <div *ngIf="f.facing.errors?.required">
+                        Facing is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <label>Flooring</label>
+                    <select
+                      class="form-control selc"
+                      formControlName="flooring"
+                      required
+                    >
+                      <option disabled selected value>Select Flooring</option>
+                      <option value="Ground Floor">Ground Floor</option>
+                      <option value="1 Floor">1 Floor</option>
+                      <option value="2 Floor">2 Floor</option>
+                      <option value="3 Floor">3 Floor</option>
+                      <option value="4 Floor">4 Floor</option>
+                      <option value="5 Floor">5 Floor</option>
+                      <option value="6 Floor">6 Floor</option>
+                      <option value="7 Floor">7 Floor</option>
+                      <option value="8 Floor">8 Floor</option>
+                      <option value="9 Floor">9 Floor</option>
+                      <option value="10 Floor">10 Floor</option>
+                    </select>
+                    <div
+                      *ngIf="
+                        f.flooring.invalid &&
+                        (f.flooring.dirty || f.flooring.touched)
+                      "
+                      class="text-danger valdi"
+                    >
+                      <div *ngIf="f.flooring.errors?.required">
+                        Flooring is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <label>Parking</label>
+                    <select
+                      class="form-control selc"
+                      formControlName="parking"
+                      required
+                    >
+                      <option disabled selected value>Select Parking</option>
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option>
+                    </select>
+                    <div
+                      *ngIf="
+                        f.parking.invalid &&
+                        (f.parking.dirty || f.parking.touched)
+                      "
+                      class="text-danger valdi"
+                    >
+                      <div *ngIf="f.parking.errors?.required">
+                        Parking is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <label>Rent Agreement Duration</label>
+                    <select
+                      class="form-control selc"
+                      formControlName="rentAgreementDuration"
+                      required
+                    >
+                      <option disabled selected value>Select Rent</option>
+                      <option value="3 Months">3 Months</option>
+                      <option value="3 Months">6 Months</option>
+                      <option value="3 year">1 Year</option>
+                      <option value="3 Year">2 Years</option>
+                    </select>
+                    <div
+                      *ngIf="
+                        f.rentAgreementDuration.invalid &&
+                        (f.rentAgreementDuration.dirty ||
+                          f.rentAgreementDuration.touched)
+                      "
+                      class="text-danger valdi"
+                    >
+                      <div *ngIf="f.rentAgreementDuration.errors?.required">
+                        Rent Agreement Duration is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <label>Months Of Notice</label>
+                    <select
+                      class="form-control selc"
+                      formControlName="monthsOfNotice"
+                      required
+                    >
+                      <option disabled selected value>Select Month</option>
+                      <option value="1 Month">1 Month</option>
+                      <option value="2 Months">2 Months</option>
+                      <option value="3 Months">3 Months</option>
+                      <option value="4 Months">4 Months</option>
+                      <option value="5 Months">5 Month</option>
+                    </select>
+                    <div
+                      *ngIf="
+                        f.monthsOfNotice.invalid &&
+                        (f.monthsOfNotice.dirty || f.monthsOfNotice.touched)
+                      "
+                      class="text-danger valdi"
+                    >
+                      <div *ngIf="f.monthsOfNotice.errors?.required">
+                        Months Notice is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <label>Electricity Water Charges</label>
+                    <select
+                      class="form-control selc"
+                      formControlName="electricityWaterCharges"
+                      required
+                    >
+                      <option disabled selected value>Select</option>
+                      <option value="Include">Include</option>
+                      <option value="Not Include">Not Include</option>
+                    </select>
+                    <div
+                      *ngIf="
+                        f.electricityWaterCharges.invalid &&
+                        (f.electricityWaterCharges.dirty ||
+                          f.electricityWaterCharges.touched)
+                      "
+                      class="text-danger valdi"
+                    >
+                      <div *ngIf="f.electricityWaterCharges.errors?.required">
+                        Charges is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <label>Power Backup</label>
+                    <select
+                      class="form-control selc"
+                      formControlName="powerBackup"
+                      required
+                    >
+                      <option disabled selected value>Select</option>
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option>
+                    </select>
+                    <div
+                      *ngIf="
+                        f.powerBackup.invalid &&
+                        (f.powerBackup.dirty || f.powerBackup.touched)
+                      "
+                      class="text-danger valdi"
+                    >
+                      <div *ngIf="f.powerBackup.errors?.required">
+                        Power Backup is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <label>Property Age</label>
+                    <input
+                      type="number"
+                      class="form-control selc"
+                      formControlName="propertyAge"
+                      placeholder="Enter Property Age"
+                      required
+                    />
+                    <div
+                      *ngIf="
+                        f.propertyAge.invalid &&
+                        (f.propertyAge.dirty || f.propertyAge.touched)
+                      "
+                      class="text-danger valdi"
+                    >
+                      <div *ngIf="f.propertyAge.errors?.required">
+                        Property Age is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <label>Property Code</label>
+                    <input
+                      type="text"
+                      class="form-control selc"
+                      formControlName="propertyCode"
+                      placeholder="Enter Property Code"
+                      required
+                    />
+                    <div
+                      *ngIf="
+                        f.propertyCode.invalid &&
+                        (f.propertyCode.dirty || f.propertyCode.touched)
+                      "
+                      class="text-danger valdi"
+                    >
+                      <div *ngIf="f.propertyCode.errors?.required">
+                        Property Code is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="col-md-3">
+                  <div class="mb-3">
+                    <label>Property Age</label>
+                    <input type="number" class="form-control selc"  formControlName="monthsOfNotice" placeholder="Enter Property Age"
+                    required>
+                      <div *ngIf="f.propertyAge.invalid && (f.propertyAge.dirty || f.propertyAge.touched )"
+                      class="text-danger valdi">
+                      <div *ngIf="f.propertyAge.errors?.required"> Property Age is required</div>
+                    </div>
+                  </div>
+                </div> -->
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <label>Rent</label>
+                    <input
+                      type="number"
+                      class="form-control selc"
+                      formControlName="rent"
+                      placeholder="Enter Rent"
+                      required
+                    />
+                    <div
+                      *ngIf="f.rent.invalid && (f.rent.dirty || f.rent.touched)"
+                      class="text-danger valdi"
+                    >
+                      <div *ngIf="f.rent.errors?.required">
+                        Rent is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="col-md-4">
+                  <div class="mb-3">
+                    <label>House Image</label><br />
+                    <input type="file"(change)="onFileSelected($event)" multiple/>
+                  </div>
+                </div> -->
+              </div>
+              <!-- <div class="row mb-5">
+                <div *ngFor="let item of selectedFiles" class="houseImge row">
+                  <img style="height: 150px; width: 200px"[src]="item" alt=""/>
+                </div>
+              </div> -->
+              <button class="btn btn_theme btn-lg">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

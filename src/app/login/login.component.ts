@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$';
   adminEmail = 'admin@mailinator.com';
   adminPassword = '123456';
+  loader:boolean=false
   get f() {
     return this.loginForm.controls;
   }
@@ -31,10 +32,12 @@ export class LoginComponent implements OnInit {
     });
   }
   login() {
+
     if (this.loginForm.invalid) {
       this.loginForm.get('email').markAsTouched();
       this.loginForm.get('password').markAsTouched();
     } else {
+      this.loader=true
       if (this.loginForm.value.email == this.adminEmail &&this.loginForm.value.password == this.adminPassword) {
         let data = {
           email: this.loginForm.value.email,
@@ -48,6 +51,7 @@ export class LoginComponent implements OnInit {
             this.router.navigateByUrl('/dashboard');
           } else {
             this.toster.error(res.ErrorMessage);
+            this.loader= false
           }
         });
       } else {

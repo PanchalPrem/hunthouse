@@ -12,6 +12,7 @@ import { CategoryComponent } from './category/category.component';
 import { HouseComponent } from './house/house.component';
 import { AlwaysGuard } from '../Guard/always.guard';
 import { CreateHouseComponent } from './house/create-house/create-house.component';
+import { UpdateHouseComponent } from './house/update-house/update-house.component';
 const routes: Routes = [
 
   {
@@ -43,7 +44,7 @@ const routes: Routes = [
 
   {path:'house',component:HouseComponent,canActivate:[AuthGuard]},
   {path:'createhouse',component:CreateHouseComponent,canActivate:[AuthGuard]},
-  {path:'updatehouse/:id',component:CreateHouseComponent,canActivate:[AuthGuard]}
+  {path:'updatehouse/:id',component:UpdateHouseComponent,canActivate:[AuthGuard]}
 ];
 
 @NgModule({
