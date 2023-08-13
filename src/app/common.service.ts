@@ -7,13 +7,20 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class CommonService {
   url: any = 'https://astroshines.com:6001/';
   token: any = localStorage.getItem('token');
-  authkey: any = localStorage.getItem('authkey');
+  authkey: any = localStorage.getItem('authKey');
 
   constructor(private http: HttpClient) {}
   ngOnInit(): void {}
   header: any = new HttpHeaders()
     .set('Authorization', `Bearer ${localStorage.getItem('token')}`)
-    .set('authkey', '' + localStorage.getItem('authkey'));
+    .set('authkey', '' + localStorage.getItem('authKey'));
+
+  getAuth() {
+    this.header = new HttpHeaders()
+      .set('Authorization', `Bearer ${localStorage.getItem('token')}`)
+      .set('authkey', '' + localStorage.getItem('authKey'));
+    console.log(this.header);
+  }
 
   loginUser(data: any) {
     return this.http.post<any>(this.url + 'admin-sign-in', data);
@@ -26,9 +33,12 @@ export class CommonService {
   }
 
   getBrokerList() {
-    return this.http.get<any>(this.url + 'broker-list', {
-      headers: this.header,
-    });
+    console.log(this.header);
+
+      return this.http.get<any>(this.url + 'broker-list', {
+        headers: this.header,
+      });
+
   }
 
   deleteBroker(data: any) {
@@ -96,34 +106,43 @@ export class CommonService {
     });
   }
 
-  getAllDetailsById(id:any) {
-    return this.http.get<any>(this.url + 'owner-detail?_id='+id, {
+  getAllDetailsById(id: any) {
+    return this.http.get<any>(this.url + 'owner-detail?_id=' + id, {
       headers: this.header,
     });
   }
 
   // Owner end ------------------------------------------------------
 
-// house start
+  // house start
 
-createHouse(data: any) {
-  return this.http.post<any>(this.url + 'create-house', data, {headers: this.header,});
-};
+  createHouse(data: any) {
+    return this.http.post<any>(this.url + 'create-house', data, {
+      headers: this.header,
+    });
+  }
 
-uploadHouseImages(data:any){
-  return this.http.post<any>(this.url + 'upload-house-image', data, {headers: this.header,});
-};
+  uploadHouseImages(data: any) {
+    return this.http.post<any>(this.url + 'upload-house-image', data, {
+      headers: this.header,
+    });
+  }
 
-getAllHouse(){
-  return this.http.get<any>(this.url + 'house-list',  {headers: this.header,});
-};
+  getAllHouse() {
+    return this.http.get<any>(this.url + 'house-list', {
+      headers: this.header,
+    });
+  }
 
-getHouseDetailsById(data:any){
-  return this.http.get<any>(this.url + 'house-detail?_id='+data,  {headers: this.header,});
-};
+  getHouseDetailsById(data: any) {
+    return this.http.get<any>(this.url + 'house-detail?_id=' + data, {
+      headers: this.header,
+    });
+  }
 
-updateHouse(data: any) {
-  return this.http.post<any>(this.url + 'update-house', data, {headers: this.header,});
-};
-
+  updateHouse(data: any) {
+    return this.http.post<any>(this.url + 'update-house', data, {
+      headers: this.header,
+    });
+  }
 }
