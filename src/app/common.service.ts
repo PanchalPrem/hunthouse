@@ -33,12 +33,9 @@ export class CommonService {
   }
 
   getBrokerList() {
-    console.log(this.header);
-
       return this.http.get<any>(this.url + 'broker-list', {
         headers: this.header,
       });
-
   }
 
   deleteBroker(data: any) {
@@ -142,6 +139,12 @@ export class CommonService {
 
   updateHouse(data: any) {
     return this.http.post<any>(this.url + 'update-house', data, {
+      headers: this.header,
+    });
+  }
+
+  userInquiryList(){
+    return this.http.get<any>(this.url + 'enquery-list', {
       headers: this.header,
     });
   }

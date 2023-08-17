@@ -18,6 +18,7 @@ import { UpdateHouseComponent } from './house/update-house/update-house.componen
 import { OwnerComponent } from './owner/owner.component';
 import { CretaeOwnerComponent } from './owner/cretae-owner/cretae-owner.component';
 import { UpdateOwnerComponent } from './owner/update-owner/update-owner.component';
+import { UserInquiryComponent } from './user-inquiry/user-inquiry.component';
 
 
 
@@ -36,6 +37,7 @@ import { UpdateOwnerComponent } from './owner/update-owner/update-owner.componen
     OwnerComponent,
     CretaeOwnerComponent,
     UpdateOwnerComponent,
+    UserInquiryComponent,
   ],
   imports: [
     CommonModule, ImageCropperModule,

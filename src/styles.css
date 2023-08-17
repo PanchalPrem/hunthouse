@@ -38,10 +38,14 @@
 
 
 :root {
-  --blue: #35B8F0;
+  /* --blue: #35B8F0; */
+  --blue: #ffe816;
+
   --pink: #DA2B88;
   --BL: #160c26;
+  /* --w: #fff; */
   --w: #fff;
+
   --br: #1a2742;
   --gr: #b2b7cc;
   --BG: #0B1220;

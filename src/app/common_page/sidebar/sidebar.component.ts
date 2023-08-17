@@ -14,8 +14,9 @@ export class SidebarComponent implements OnInit {
     { icon: "fa fa-users fa-fw", name: "Broker", path: "/users",  },
     {icon:"	fa fa-bars",name:"Category",path:"/category"},
     {icon:"	fa fa-user",name:"Owner",path:"/owner"},
-
     {icon:"	fa fa-home",name:"House",path:"/house"},
+    {icon:"	fa fa-question",name:"inquiry",path:"/inquiry"},
+
 
     // { icon: "fa fa-sign-out", name: "Logout", path: "", class:'logout' }
     { icon: "fa fa-sign-out", name: "Logout", path: "" }
