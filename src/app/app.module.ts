@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { SharedmoduleModule } from './common_page/sharedmodule.module';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgbActiveModal, NgbModule, NgbNav, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbDropdownModule, NgbModule, NgbNav, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { ImageCropperModule } from 'ngx-image-cropper-support';
 
 @NgModule({
@@ -26,7 +26,7 @@ import { ImageCropperModule } from 'ngx-image-cropper-support';
     BrowserAnimationsModule,
     SharedmoduleModule,
     ToastrModule,
-    NgbModule, NgbNavModule,
+    NgbModule, NgbNavModule,NgbDropdownModule
 
   ],
   providers: [],

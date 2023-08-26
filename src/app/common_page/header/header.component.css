@@ -19,3 +19,15 @@ a.dropdown-item:hover {
   background: #102237;
   color: var(--blue);
 }
+button#dropdownBasic1 {
+  background: none;
+  border: none;
+  color: #fdfdfd;
+  font-weight: 700;
+  font-size: 13px;
+  font-size: 15px;
+  line-height: 25px;
+}
+button#dropdownBasic1 :hover{
+color: #f8bb11;;
+}

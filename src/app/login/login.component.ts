@@ -1,7 +1,7 @@
 import { Component, OnInit, VERSION } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import {FormBuilder,FormGroup,Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonService } from 'src/app/common.service';
 // import { ReCaptchaV3Service } from 'ng-recaptcha';
 declare var $: any;
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$';
   adminEmail = 'admin@mailinator.com';
   adminPassword = '123456';
-  loader:boolean=false
+  loader: boolean = false;
   get f() {
     return this.loginForm.controls;
   }
@@ -32,31 +32,32 @@ export class LoginComponent implements OnInit {
     });
   }
   login() {
-
     if (this.loginForm.invalid) {
       this.loginForm.get('email').markAsTouched();
       this.loginForm.get('password').markAsTouched();
     } else {
-      this.loader=true
-      if (this.loginForm.value.email == this.adminEmail &&this.loginForm.value.password == this.adminPassword) {
-        let data = {
-          email: this.loginForm.value.email,
-          password: this.loginForm.value.password,
-        };
-        this.service.loginUser(data).subscribe((res: any) => {
-          if (res.ErrorCode == 200) {
-            localStorage.setItem('token', res.data[0].authToken);
-            localStorage.setItem('authKey', res.authkey);
-            localStorage.setItem('id', res.data[0]._id);
-            this.router.navigateByUrl('/dashboard');
-          } else {
-            this.toster.error(res.ErrorMessage);
-            this.loader= false
+      this.loader = true;
+      let data = {
+        email: this.loginForm.value.email,
+        password: this.loginForm.value.password,
+      };
+      this.service.loginUser(data).subscribe((res: any) => {
+        if (res.ErrorCode == 200) {
+          localStorage.setItem('token', res.data[0].authToken);
+          localStorage.setItem('authKey', res.authkey);
+          localStorage.setItem('id', res.data[0]._id);
+          if(res.data[0].roleId==1){
+            localStorage.setItem('broker','true')
           }
-        });
-      } else {
-        alert('User Not Authorized');
-      }
+          else{
+            localStorage.removeItem('broker')
+          }
+          this.router.navigateByUrl('/dashboard');
+        } else {
+          this.toster.error(res.ErrorMessage);
+          this.loader = false;
+        }
+      });
     }
   }
 }
