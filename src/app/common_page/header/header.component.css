@@ -4,7 +4,8 @@
 }
 
 .header ul li a {
-  color: var(--w);
+  /* color: var(--w); */
+  color: #fdfdfd;
   font-family: "PopSB";
   font-size: 16px;
 }

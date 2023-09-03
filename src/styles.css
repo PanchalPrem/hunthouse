@@ -45,6 +45,8 @@
   --BL: #160c26;
   /* --w: #fff; */
   --w: #fff;
+  /* --w: #000000; */
+
 
   --br: #1a2742;
   --gr: #b2b7cc;
@@ -60,7 +62,8 @@ body {
   font-family: 'PopR';
   line-height: 25px;
   font-size: 15px;
-  color: var(--w);
+  /* color: var(--w); */
+  color: white;
   background-image: url(assets/img/img_3.png);
   background-size: cover;
   background-position: top center;
@@ -139,7 +142,8 @@ strong {
 
 .btn_theme {
   background: var(--blue);
-  color: var(--w) !important;
+  /* color: var(--w) !important; */
+  color: #000 !important;
   box-shadow: none !important;
   padding: 6px 20px;
   font-size: 16px;
@@ -247,7 +251,8 @@ h6 {
 .conten_set h2,
 .conten_set h3 {
   font-family: "PopSB";
-  color: var(--w);
+  /* color: var(--w); */
+  color: white;
 }
 
 .conten_set h1,
@@ -468,9 +473,16 @@ h6 {
 
 }
 
-.table_de1 .table tr th,
+.table_de1 .table tr th{
+  /* color: var(--w); */
+  color: #000;
+  border-bottom: 1px solid var(--br);
+  padding: 10px 15px;
+  border-left: none !important;
+  border-right: none !important;
+}
 .table_de1 .table tr td {
-  color: var(--w);
+  color: #fff7f7;
   border-bottom: 1px solid var(--br);
   padding: 10px 15px;
   border-left: none !important;
@@ -845,7 +857,7 @@ h6 {
 .box_4 {
   padding: 15px;
   position: relative;
-  padding-left: 80px;
+  /* padding-left: 80px; */
   min-height: 95px;
   border-radius: 10px;
   background: linear-gradient(45deg, rgb(5, 30, 40) 0%, rgb(2, 1, 2) 100%);

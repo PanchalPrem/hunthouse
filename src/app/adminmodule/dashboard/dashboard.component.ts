@@ -9,6 +9,7 @@ import { CommonService } from 'src/app/common.service';
 export class DashboardComponent implements OnInit {
   loginRole: any = localStorage.getItem('role');
   earnings: any;
+  dashboardData: any = [];
   constructor(
     private router: Router,
     private service: CommonService,
@@ -17,5 +18,11 @@ export class DashboardComponent implements OnInit {
   alldata: any = [];
   ngOnInit(): void {
     this.service.getAuth();
+    this.getDetails();
+  }
+  getDetails() {
+    this.service.dashBoardCount().subscribe((res: any) => {
+      this.dashboardData = res;
+    });
   }
 }

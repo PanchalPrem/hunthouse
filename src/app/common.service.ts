@@ -143,9 +143,22 @@ export class CommonService {
     });
   }
 
+  deleteHouse(data:any){
+    return this.http.get<any>(this.url + 'deleteOne-house?_id=' + data, {
+      headers: this.header,
+    });
+  }
   userInquiryList(){
     return this.http.get<any>(this.url + 'enquery-list', {
       headers: this.header,
     });
   }
+
+  dashBoardCount(){
+    return this.http.get<any>(this.url + 'dashboardCount', {
+      headers: this.header,
+    });
+  }
+
+
 }

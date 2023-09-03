@@ -31,7 +31,7 @@
 .container form .data{
   height: 45px;
   width: 100%;
-  margin: 40px 0;
+  margin: 53px 0;
 }
 form .data label{
   font-size: 18px;
@@ -63,7 +63,8 @@ form .btn .inner{
   bottom: 0;
   z-index: -1;
   /* background: -webkit-linear-gradient(right, #56d8e4, #9f01ea, #56d8e4, #9f01ea); */
-  background-image: linear-gradient(to right, #FF512F 0%, #F09819  51%, #FF512F  100%);
+  /* background-image: linear-gradient(to right, #FF512F 0%, #F09819  51%, #FF512F  100%); */
+  background-color: #ffdd61;
 
   transition: all 0.4s;
 }
@@ -75,7 +76,7 @@ form .btn button{
   width: 100%;
   background: none;
   border: none;
-  color: #fff;
+  color: #000000;
   font-size: 18px;
   font-weight: 500;
   text-transform: uppercase;

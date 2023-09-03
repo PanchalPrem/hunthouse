@@ -43,16 +43,20 @@ export class LoginComponent implements OnInit {
       };
       this.service.loginUser(data).subscribe((res: any) => {
         if (res.ErrorCode == 200) {
-          localStorage.setItem('token', res.data[0].authToken);
-          localStorage.setItem('authKey', res.authkey);
-          localStorage.setItem('id', res.data[0]._id);
-          if(res.data[0].roleId==1){
-            localStorage.setItem('broker','true')
+          if (res.data[0].roleId != 2) {
+            localStorage.setItem('token', res.data[0].authToken);
+            localStorage.setItem('authKey', res.authkey);
+            localStorage.setItem('id', res.data[0]._id);
+            if (res.data[0].roleId == 1) {
+              localStorage.setItem('broker', 'true');
+            } else {
+              localStorage.removeItem('broker');
+            }
+            this.router.navigateByUrl('/dashboard');
+          } else {
+          this.toster.error("User not authorized");
+          this.loader = false;
           }
-          else{
-            localStorage.removeItem('broker')
-          }
-          this.router.navigateByUrl('/dashboard');
         } else {
           this.toster.error(res.ErrorMessage);
           this.loader = false;
