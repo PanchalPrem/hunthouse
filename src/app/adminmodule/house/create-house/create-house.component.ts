@@ -11,10 +11,11 @@ import { CommonService } from 'src/app/common.service';
 export class CreateHouseComponent {
   createHouseForm: any = FormGroup;
   selectedFiles: any = [];
-  brokerData:any=[];
-  categoryData:any=[];
-  ownerData:any=[];
-  houseImages:any=[];
+  brokerData: any = [];
+  categoryData: any = [];
+  ownerData: any = [];
+  houseImages: any = [];
+  isCheckBroker: any;
   get f() {
     return this.createHouseForm.controls;
   }
@@ -25,9 +26,6 @@ export class CreateHouseComponent {
     private toster: ToastrService
   ) {}
   ngOnInit(): void {
-    this.getBrokerData();
-    this.getcategory();
-    this.getOwner();
     this.createHouseForm = this.fb.group({
       brokerId: ['', [Validators.required]],
       categoryId: ['', [Validators.required]],
@@ -51,8 +49,21 @@ export class CreateHouseComponent {
       propertyAge: ['', [Validators.required]],
       propertyCode: ['', [Validators.required]],
       aboutProperty: ['', [Validators.required]],
+      houseName: ['', [Validators.required]],
       status: [1],
     });
+    this.isCheckBroker = localStorage.getItem('broker');
+    if (this.isCheckBroker == null) {
+      this.getBrokerData();
+    } else {
+      console.log(this.isCheckBroker);
+      let data: any = JSON.parse(this.isCheckBroker);
+      this.brokerData = [data];
+      console.log(this.brokerData);
+    }
+
+    this.getcategory();
+    this.getOwner();
   }
   createHouse() {
     const formData = new FormData();
@@ -74,9 +85,18 @@ export class CreateHouseComponent {
     formData.append('facing', this.createHouseForm.value.facing);
     formData.append('flooring', this.createHouseForm.value.flooring);
     formData.append('parking', this.createHouseForm.value.parking);
-    formData.append('rentAgreementDuration', this.createHouseForm.value.rentAgreementDuration);
-    formData.append('monthsOfNotice', this.createHouseForm.value.monthsOfNotice);
-    formData.append('electricityWaterCharges', this.createHouseForm.value.electricityWaterCharges);
+    formData.append(
+      'rentAgreementDuration',
+      this.createHouseForm.value.rentAgreementDuration
+    );
+    formData.append(
+      'monthsOfNotice',
+      this.createHouseForm.value.monthsOfNotice
+    );
+    formData.append(
+      'electricityWaterCharges',
+      this.createHouseForm.value.electricityWaterCharges
+    );
     formData.append('powerBackup', this.createHouseForm.value.powerBackup);
     formData.append('propertyAge', this.createHouseForm.value.propertyAge);
     formData.append('propertyCode', this.createHouseForm.value.propertyCode);
@@ -107,21 +127,21 @@ export class CreateHouseComponent {
       this.createHouseForm.get('aboutProperty').markAsTouched();
     } else {
       this.service.createHouse(formData).subscribe((res: any) => {
-          if (res.ErrorCode == 200) {
-            console.log('1', res);
-            this.toster.success('House create successfully');
-            this.router.navigateByUrl('/house');
-          } else {
-            this.toster.error(res.ErrorMessage);
-          }
-        });
+        if (res.ErrorCode == 200) {
+          console.log('1', res);
+          this.toster.success('House create successfully');
+          this.router.navigateByUrl('/house');
+        } else {
+          this.toster.error(res.ErrorMessage);
+        }
+      });
     }
   }
   onFileSelected(event: any) {
     // this.selectedFiles = event.target.files;
     if (event.target.files && event.target.files.length > 0) {
       const files: File[] = event.target.files;
-     this.houseImages=files;
+      this.houseImages = files;
       for (const file of files) {
         const reader = new FileReader();
         reader.onload = (e: any) => {
@@ -130,24 +150,23 @@ export class CreateHouseComponent {
         reader.readAsDataURL(file);
       }
     }
-
   }
 
-  getBrokerData(){
-    this.service.getBrokerList().subscribe((res:any)=>{
-      this.brokerData=res.data;
-    })
+  getBrokerData() {
+    this.service.getBrokerList().subscribe((res: any) => {
+      this.brokerData = res.data;
+    });
   }
 
-  getcategory(){
-    this.service.getcategoey().subscribe((res:any)=>{
-      this.categoryData=res.data;
-    })
+  getcategory() {
+    this.service.getcategoey().subscribe((res: any) => {
+      this.categoryData = res.data;
+    });
   }
 
-  getOwner(){
-    this.service.getAllOwner().subscribe((res:any)=>{
-      this.ownerData=res.data;
-    })
+  getOwner() {
+    this.service.getAllOwner().subscribe((res: any) => {
+      this.ownerData = res.data;
+    });
   }
 }

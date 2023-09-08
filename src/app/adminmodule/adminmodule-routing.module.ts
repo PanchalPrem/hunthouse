@@ -1,3 +1,4 @@
+import { UserListComponent } from './user-list/user-list.component';
 import { UpdateOwnerComponent } from './owner/update-owner/update-owner.component';
 import { CretaeOwnerComponent } from './owner/cretae-owner/cretae-owner.component';
 import { OwnerComponent } from './owner/owner.component';
@@ -14,6 +15,7 @@ import { AlwaysGuard } from '../Guard/always.guard';
 import { CreateHouseComponent } from './house/create-house/create-house.component';
 import { UpdateHouseComponent } from './house/update-house/update-house.component';
 import { UserInquiryComponent } from './user-inquiry/user-inquiry.component';
+import { BookedHouseComponent } from './booked-house/booked-house.component';
 const routes: Routes = [
 
   {
@@ -47,7 +49,11 @@ const routes: Routes = [
   {path:'createhouse',component:CreateHouseComponent,canActivate:[AuthGuard]},
   {path:'updatehouse/:id',component:UpdateHouseComponent,canActivate:[AuthGuard]},
 
-  {path:'inquiry',component:UserInquiryComponent}
+  {path:'inquiry',component:UserInquiryComponent,canActivate:[AuthGuard]},
+  {path:'booked-house',component:BookedHouseComponent,canActivate:[AuthGuard]},
+  {path:'user',component:UserListComponent,canActivate:[AuthGuard]},
+
+
 ];
 
 @NgModule({

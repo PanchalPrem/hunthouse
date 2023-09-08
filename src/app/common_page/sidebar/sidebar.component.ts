@@ -21,20 +21,19 @@ export class SidebarComponent implements OnInit {
     { icon: '	fa fa-bars', name: 'Category', path: '/category' },
     { icon: '	fa fa-user', name: 'Owner', path: '/owner' },
     { icon: '	fa fa-home', name: 'House', path: '/house' },
-    { icon: '	fa fa-question', name: 'inquiry', path: '/inquiry' },
-
+    { icon: '	fa fa-question', name: 'Inquiry', path: '/inquiry' },
+    { icon: '	fa fa-user', name: 'User', path: '/user' },
+    { icon: '	fa fa-tasks', name: 'Booked House', path: '/booked-house' },
     // { icon: "fa fa-sign-out", name: "Logout", path: "", class:'logout' }
     { icon: 'fa fa-sign-out', name: 'Logout', path: '' },
   ];
   brokerList: any = [
     { icon: 'fa fa-dashboard', name: 'Dashboard', path: '/dashboard' },
-    // { icon: "fa fa-users fa-fw", name: "Broker", path: "/users",  },
     { icon: '	fa fa-bars', name: 'Category', path: '/category' },
     { icon: '	fa fa-user', name: 'Owner', path: '/owner' },
     { icon: '	fa fa-home', name: 'House', path: '/house' },
-    { icon: '	fa fa-question', name: 'inquiry', path: '/inquiry' },
-
-    // { icon: "fa fa-sign-out", name: "Logout", path: "", class:'logout' }
+    { icon: '	fa fa-user', name: 'User', path: '/user' },
+    { icon: '	fa fa-tasks', name: 'Booked House', path: '/booked-house' },
     { icon: 'fa fa-sign-out', name: 'Logout', path: '' },
   ];
   ngOnInit(): void {

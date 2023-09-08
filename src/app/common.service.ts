@@ -33,9 +33,9 @@ export class CommonService {
   }
 
   getBrokerList() {
-      return this.http.get<any>(this.url + 'broker-list', {
-        headers: this.header,
-      });
+    return this.http.get<any>(this.url + 'broker-list', {
+      headers: this.header,
+    });
   }
 
   deleteBroker(data: any) {
@@ -143,22 +143,31 @@ export class CommonService {
     });
   }
 
-  deleteHouse(data:any){
+  deleteHouse(data: any) {
     return this.http.get<any>(this.url + 'deleteOne-house?_id=' + data, {
       headers: this.header,
     });
   }
-  userInquiryList(){
+  userInquiryList() {
     return this.http.get<any>(this.url + 'enquery-list', {
       headers: this.header,
     });
   }
 
-  dashBoardCount(){
+  dashBoardCount() {
     return this.http.get<any>(this.url + 'dashboardCount', {
       headers: this.header,
     });
   }
 
-
+  userList() {
+    return this.http.get<any>(this.url + 'users-list', {
+      headers: this.header,
+    });
+  }
+  bookedHouseList() {
+    return this.http.get<any>(this.url + 'user-booking-list', {
+      headers: this.header,
+    });
+  }
 }

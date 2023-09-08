@@ -177,6 +177,29 @@
                 </div>
                 <div class="col-md-3">
                   <div class="mb-3">
+                    <label>House Name</label>
+                    <input
+                      type="text"
+                      class="form-control selc"
+                      formControlName="houseName"
+                      placeholder="Enter House Name"
+                      required
+                    />
+                    <div
+                      *ngIf="
+                        f.houseName.invalid &&
+                        (f.houseName.dirty || f.houseName.touched)
+                      "
+                      class="text-danger valdi"
+                    >
+                      <div *ngIf="f.houseName.errors?.required">
+                       House Name is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="mb-3">
                     <label>Available For</label>
                     <select
                       class="form-control selc"

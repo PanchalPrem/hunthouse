@@ -55,6 +55,9 @@ export class UpdateHouseComponent {
       propertyAge: ['', [Validators.required]],
       propertyCode: ['', [Validators.required]],
       aboutProperty: ['', [Validators.required]],
+      houseName: ['', [Validators.required]],
+
+
       status: [1],
     });
   }
@@ -83,6 +86,7 @@ export class UpdateHouseComponent {
       propertyAge: this.updateHouseForm.value.propertyAge,
       propertyCode: this.updateHouseForm.value.propertyCode,
       aboutProperty: this.updateHouseForm.value.aboutProperty,
+      houseName:this.updateHouseForm.value.houseName,
       status: 1,
       _id: this.routeId,
     };
@@ -109,6 +113,8 @@ export class UpdateHouseComponent {
       this.updateHouseForm.get('propertyAge').markAsTouched();
       this.updateHouseForm.get('propertyCode').markAsTouched();
       this.updateHouseForm.get('aboutProperty').markAsTouched();
+      this.updateHouseForm.get('houseName').markAsTouched();
+
     } else {
       this.service.updateHouse(data).subscribe((res: any) => {
         if (res.ErrorCode == 200) {
@@ -166,6 +172,8 @@ export class UpdateHouseComponent {
         propertyAge: [res.data[0].propertyAge, [Validators.required]],
         propertyCode: [res.data[0].propertyCode, [Validators.required]],
         aboutProperty: [res.data[0].aboutProperty, [Validators.required]],
+        houseName: [res.data[0].houseName, [Validators.required]],
+
         status: [1],
       });
     });

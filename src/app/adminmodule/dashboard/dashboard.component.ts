@@ -10,6 +10,7 @@ export class DashboardComponent implements OnInit {
   loginRole: any = localStorage.getItem('role');
   earnings: any;
   dashboardData: any = [];
+  isCheckBroker:any
   constructor(
     private router: Router,
     private service: CommonService,
@@ -17,6 +18,7 @@ export class DashboardComponent implements OnInit {
   ) {}
   alldata: any = [];
   ngOnInit(): void {
+    this.isCheckBroker = localStorage.getItem('broker');
     this.service.getAuth();
     this.getDetails();
   }

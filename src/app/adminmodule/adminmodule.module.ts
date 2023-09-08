@@ -19,6 +19,8 @@ import { OwnerComponent } from './owner/owner.component';
 import { CretaeOwnerComponent } from './owner/cretae-owner/cretae-owner.component';
 import { UpdateOwnerComponent } from './owner/update-owner/update-owner.component';
 import { UserInquiryComponent } from './user-inquiry/user-inquiry.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { BookedHouseComponent } from './booked-house/booked-house.component';
 
 
 
@@ -38,6 +40,8 @@ import { UserInquiryComponent } from './user-inquiry/user-inquiry.component';
     CretaeOwnerComponent,
     UpdateOwnerComponent,
     UserInquiryComponent,
+    UserListComponent,
+    BookedHouseComponent,
   ],
   imports: [
     CommonModule, ImageCropperModule,

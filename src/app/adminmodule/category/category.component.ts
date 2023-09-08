@@ -1,5 +1,5 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component, ElementRef,  ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import {
   NgbActiveModal,
   NgbModal,
@@ -21,6 +21,7 @@ export class CategoryComponent {
   modalReference: any;
   createCategoryForm: any = FormGroup;
   updateCategoryForm: any = FormGroup;
+  isCheckBroker: any;
   cateID: any;
   get f() {
     return this.createCategoryForm.controls;
@@ -40,10 +41,13 @@ export class CategoryComponent {
     private router: Router
   ) {}
   ngOnInit(): void {
-    this.getcategoryData();
+    this.isCheckBroker = localStorage.getItem('broker');
+    console.log(this.isCheckBroker);
+
     this.createCategoryForm = this.fb.group({
       name: ['', Validators.required],
     });
+    this.getcategoryData();
 
     this.updateCategoryForm = this.fb.group({
       name: ['', Validators.required],
@@ -120,15 +124,35 @@ export class CategoryComponent {
             return status;
           },
         },
+        // {
+        //   data: '_id',
+        //   render: function (data: any, type: any, item: any, meta: any) {
+        //     let isCheckBroker = localStorage.getItem('broker');
+        //     if (isCheckBroker == null) {
+        //       return `<button class="btn btn_theme" id="editCategory" value=${data}  >Edit</button>
+        // <button  class="btn btn_theme" id="deleteCategory" value=${data}  style="background: #f00;" >Delete</button>`;
+        //     } else {
+        //       return $('#myTable').DataTable().columns([3]).visible(false);
+        //     }
+        //   },
+        // },
+      ],
+      columnDefs: [
+        { className: 'text-center', targets: [0, 1, 2, 3,] },
         {
-          data: '_id',
+          targets: [3],
           render: function (data: any, type: any, item: any, meta: any) {
-            return `<button class="btn btn_theme" id="editCategory" value=${data}  >Edit</button>
-        <button  class="btn btn_theme" id="deleteCategory" value=${data}  style="background: #f00;" >Delete</button>`;
+            let isCheckBroker = localStorage.getItem('broker');
+            if (isCheckBroker == null) {
+              return `<button class="btn btn_theme" id="editCategory" value=${data}  >Edit</button>
+              <button  class="btn btn_theme" id="deleteCategory" value=${data}  style="background: #f00;" >Delete</button>`;
+            } else {
+              return $('#myTable').DataTable().columns([3]).visible(false);
+            }
           },
         },
+
       ],
-      columnDefs: [{ className: 'text-center', targets: [0, 1, 2, 3] }],
     });
   }
 

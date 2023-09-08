@@ -4,7 +4,7 @@
   <div class="conten_main conten_set">
     <h3>
       Category List
-      <a class="btn btn_theme" (click)="openXl(content)">Add Category</a>
+      <a *ngIf="isCheckBroker==null" class="btn btn_theme" (click)="openXl(content)">Add Category</a>
     </h3>
     <div class="table_de1 table-responsive">
       <table id="myTable" class="table table-bordered table-striped table-hover">
@@ -13,7 +13,7 @@
             <th>Sr No</th>
             <th>Name</th>
             <th>Status</th>
-            <th>Action</th>
+            <th *ngIf="isCheckBroker==null">Action</th>
           </tr>
         </thead>
       </table>
