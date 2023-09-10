@@ -170,4 +170,9 @@ export class CommonService {
       headers: this.header,
     });
   }
+  checkToekn() {
+    return this.http.get<any>(this.url + 'check-token', {
+      headers: this.header,
+    });
+  }
 }

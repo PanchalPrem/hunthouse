@@ -44,6 +44,13 @@ export class SidebarComponent implements OnInit {
       : (this.sideMenu = this.brokerList);
   }
   routeNow(path: any) {
-    this.router.navigateByUrl('/' + path);
+    this.service.checkToekn().subscribe((res: any) => {
+      if (res.ErrorCode == 401) {
+        localStorage.clear();
+        this.router.navigateByUrl('/')
+      }else{
+        this.router.navigateByUrl('/' + path);
+      }
+    });
   }
 }
