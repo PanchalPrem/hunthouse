@@ -166,7 +166,7 @@ export class CommonService {
     });
   }
   bookedHouseList() {
-    return this.http.get<any>(this.url + 'user-booking-list', {
+    return this.http.get<any>(this.url + 'order-list', {
       headers: this.header,
     });
   }
@@ -175,4 +175,10 @@ export class CommonService {
       headers: this.header,
     });
   }
+  AcceptReject(data:any){
+    return this.http.post<any>(this.url + 'update-order-status', data, {
+      headers: this.header,
+    });
+  }
+
 }

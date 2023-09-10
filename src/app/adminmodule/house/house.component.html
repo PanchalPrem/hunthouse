@@ -5,7 +5,9 @@
     <h3>House List
       <a routerLink="/createhouse" class="btn btn_theme" >Create House</a>
     </h3>
-    <div class="table_de1 table-responsive">
+    <a class="btn btn_theme" (click)="checkHouseStatus(1)">Booked House</a>&nbsp;
+      <a class="btn btn_theme" (click)="checkHouseStatus(2)">Free House</a>
+    <div class="table_de1 table-responsive mt-2">
       <table id="myTable" class="table table-bordered table-striped table-hover">
         <thead>
           <tr>

@@ -10,6 +10,7 @@ declare var $: any;
   styleUrls: ['./house.component.css'],
 })
 export class HouseComponent {
+  allHouse: any = [];
   constructor(
     private service: CommonService,
     private router: Router,
@@ -27,6 +28,7 @@ export class HouseComponent {
 
   getAllHouse() {
     this.service.getAllHouse().subscribe((res: any) => {
+      this.allHouse = res.data;
       this.datatable(res.data);
     });
   }
@@ -63,19 +65,28 @@ export class HouseComponent {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
         this.service.deleteHouse(id).subscribe((res: any) => {
           if (res.ErrorCode == 200) {
             this.toster.success('House deleted successfully');
-            this.getAllHouse()
+            this.getAllHouse();
           } else {
             this.toster.error('Something want wrong');
           }
         });
       }
-    })
-
+    });
+  }
+  checkHouseStatus(type: any) {
+    let filterData: any = [];
+    if (type == 1) {
+      filterData = this.allHouse.filter((x: any) => x.is_booked == 1);
+    } else {
+      filterData = this.allHouse.filter((x: any) => x.is_booked == 0);
+    }
+    // alert(type);
+    this.datatable(filterData);
   }
 }
