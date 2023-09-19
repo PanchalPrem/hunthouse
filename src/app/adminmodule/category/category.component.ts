@@ -42,9 +42,7 @@ export class CategoryComponent {
   ) {}
   ngOnInit(): void {
     this.isCheckBroker = localStorage.getItem('broker');
-    console.log(this.isCheckBroker);
-
-    this.createCategoryForm = this.fb.group({
+     this.createCategoryForm = this.fb.group({
       name: ['', Validators.required],
     });
     this.getcategoryData();
@@ -55,6 +53,8 @@ export class CategoryComponent {
 
     $(document).on('click', '#editCategory', ($event: any) => {
       this.modalService.open(this.content1);
+      console.log($event.target.value);
+
       this.getcatById($event.target.value);
     });
     $(document).on('click', '#deleteCategory', ($event: any) => {
@@ -142,9 +142,9 @@ export class CategoryComponent {
         {
           targets: [3],
           render: function (data: any, type: any, item: any, meta: any) {
-            let isCheckBroker = localStorage.getItem('broker');
+           let isCheckBroker = localStorage.getItem('broker');
             if (isCheckBroker == null) {
-              return `<button class="btn btn_theme" id="editCategory" value=${data}  >Edit</button>
+              return `<button class="btn btn_theme" id="editCategory" value=${item._id}  >Edit</button>
               <button  class="btn btn_theme" id="deleteCategory" value=${data}  style="background: #f00;" >Delete</button>`;
             } else {
               return $('#myTable').DataTable().columns([3]).visible(false);
@@ -159,7 +159,6 @@ export class CategoryComponent {
   deleteCategory(id: any) {
     let data: any = { _id: id };
     console.log(data);
-
     Swal.fire({
       title: 'Are you sure?',
       text: 'Do you want to delete this category',
@@ -199,6 +198,7 @@ export class CategoryComponent {
       };
       this.service.updateCategory(data).subscribe((res: any) => {
         if (res.ErrorCode == 200) {
+          $('.btn-close').trigger('click')
           this.toastr.success('Category Update Successfully');
           this.updateCategoryForm.reset();
           this.getcategoryData();

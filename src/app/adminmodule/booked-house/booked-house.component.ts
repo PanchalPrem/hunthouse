@@ -10,14 +10,17 @@ declare var $: any;
 })
 export class BookedHouseComponent {
   bookedhouse: any = [];
-  constructor(private service: CommonService,private toster:ToastrService) {}
+  isLogedChecked:any
+  constructor(private service: CommonService, private toster: ToastrService) {}
   ngOnInit(): void {
     this.getHouseBooked();
+    this.isLogedChecked=  localStorage.getItem('broker');
+    console.log("isLogedChecked",this.isLogedChecked);
     $(document).on('click', '#Accept_Reject', ($event: any) => {
       this.acceptRej($event.target.value);
     });
     $(document).on('click', '#relese', ($event: any) => {
-      this.callAcceptReject(3,$event.target.value);
+      this.callAcceptReject(3, $event.target.value);
     });
   }
   getHouseBooked() {
@@ -45,23 +48,24 @@ export class BookedHouseComponent {
         {
           data: '_id',
           render: function (data: any, type: any, item: any, meta: any) {
-            console.log(item);
-            if (item.status==0) {
-              return `<button class="btn btn_theme" id="Accept_Reject" value=${data},${item.houseDetails._id}  >Accept & Reject</button>
-                <button  class="btn btn_theme" id="relese" value=${data},${item.houseDetails._id}  style="background: #f00;" >Relese</button>`;
-            }else if(item.status==1){
-              return `<button  class="btn btn_theme" id="relese" value=${data},${item.houseDetails._id}  style="background: #f00;" >Relese</button>`
+            let isLogedChecked=  localStorage.getItem('broker');
+            if (isLogedChecked==null) {
+              if (item.status == 0) {
+                return `<button class="btn btn_theme" id="Accept_Reject" value=${data},${item.houseDetails._id}  >Accept & Reject</button>`;
+              } else if (item.status == 1) {
+                return `<button  class="btn btn_theme" id="relese" value=${data},${item.houseDetails._id}  style="background: #f00;" >Relese</button>`;
+              }else if (item.status == 2) {
+                return `<p class='text-danger'>Rejected</p>`;
+              }else {
+                return `<p class='text-success'>Setteled</p>`;
+              };
             }else{
-              return 'Setteled'
-
+              return $('#myTable1').DataTable().columns([4]).visible(false);
             }
           },
         },
       ],
-      columnDefs: [
-        { className: 'text-center', targets: [4] },
-      ]
-
+      columnDefs: [{ className: 'text-center', targets: [4] }],
     });
   }
   acceptRej(val: any) {
@@ -89,12 +93,15 @@ export class BookedHouseComponent {
       _id: ids[0],
       houseId: ids[1],
     };
-    this.service.AcceptReject(data).subscribe((res:any)=>{
-      if (res.ErrorCode==200) {
+    this.service.AcceptReject(data).subscribe((res: any) => {
+      if (res.ErrorCode == 200) {
         this.getHouseBooked();
-        status==1||2? this.toster.success(`House ${status==1?'Accepet':'reject'} successfully`):this.toster.success(`House reles successfully`)
+        status == 1 || 2
+          ? this.toster.success(
+              `House ${status == 1 ? 'Accepet' : 'reject'} successfully`
+            )
+          : this.toster.success(`House reles successfully`);
       }
-    })
+    });
   }
-
 }
